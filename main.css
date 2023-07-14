@@ -8,3 +8,15 @@ html body {
 body {
     width: 800px;
 }
+
+.testing-url-input-container {
+    display: flex;
+}
+
+.testing-url-input-container input:first-child {
+    flex: 1;
+}
+
+.testing-url-input-container input:nth-child(2) {
+    flex: 3;
+}

@@ -6,15 +6,24 @@
     <body>
         <main class="container">
             <h1>Mage Ya Look</h1>
-            <p></p>
-            <label for="urlPrefix">Testing URL</label>
-                <div class="testing-url-input-container">
-                    <input type="text" id="urlHttps" name="urlPrefix" placeholder="https://" required value="https://">
-                    <input type="text" id="urlBase" name="urlPrefix" placeholder="www.superbrightleds.com" required value="www.superbrightleds.com">
-                </div>
-                <p id="urlDisplay"></p>
+            <p>A sweet SBL extension for Magento testing.</p>
 
+            <div class="flex">
+                <label for="urlPrefix">Testing URL: &nbsp;</label>
+                <label id="urlDisplay"></label>
+            </div>
+            <div class="testing-url-input-container">
+                <input type="text" id="urlHttps" name="urlPrefix" placeholder="https://" required value="https://">
+                <input type="text" id="urlBase" name="urlPrefix" placeholder="www.superbrightleds.com" required value="www.superbrightleds.com">
+            </div>
+                
             <button id="random-pdp-btn">Random PDP</button>
+
+            <div class="flex">
+                <label for="pageLoadTime">Page Load Time: &nbsp;</label>
+                <strong id="page-load-time">Select an option for load times</strong>
+            </div>
+
 
 
 

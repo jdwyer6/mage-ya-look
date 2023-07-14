@@ -9,6 +9,10 @@ body {
     width: 800px;
 }
 
+h1 {
+    margin-bottom: 0;
+}
+
 .testing-url-input-container {
     display: flex;
 }
@@ -19,4 +23,8 @@ body {
 
 .testing-url-input-container input:nth-child(2) {
     flex: 3;
+}
+
+.flex {
+    display: flex;
 }

@@ -3,6 +3,7 @@ let urlHttps = document.getElementById("urlHttps")
 let urlBase = document.getElementById("urlBase")
 let urlDisplay = document.getElementById('urlDisplay')
 let numberOf404Checks = 0;
+let pageLoadTime = document.getElementById("page-load-time");
 
 updateCurrentUrl();
 
@@ -53,6 +54,33 @@ function check404() {
           console.error('Failed to fetch the page:', error);
         });
     });
+}
+
+chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
+    if (request.loadTime) {
+      const loadTime = request.loadTime;
+        pageLoadTime.innerHTML = loadTime;
+        pageLoadTime.style.color = updateLoadTimeColor(loadTime);
+        if(loadTime < 1000) {
+            pageLoadTime.innerHTML += '&nbsp; &#x1F525;'
+        }else if(loadTime > 7000){
+            pageLoadTime.innerHTML += '&nbsp; &#x1F422;'
+        }
+    }
+});
+
+const updateLoadTimeColor = (loadTime) => {
+    if(loadTime){
+        if(loadTime < 2500){
+            return 'green'
+        }else if(loadTime > 2500 && loadTime < 6000){
+            return 'orange'
+        }else if(loadTime > 6000){
+            return 'red'
+        }else{
+            return 'blue'
+        }
+    }
 }
 
 

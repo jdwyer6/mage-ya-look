@@ -5,6 +5,10 @@ let urlDisplay = document.getElementById('urlDisplay')
 let numberOf404Checks = 0;
 let pageLoadTime = document.getElementById("page-load-time");
 
+let isSuperBrightLeds = () => {
+    return urlBase.value === "www.superbrightleds.com" ? true : false;
+}
+
 updateCurrentUrl();
 
 urlHttps.addEventListener('input', updateCurrentUrl);
@@ -13,9 +17,17 @@ urlBase.addEventListener('input', updateCurrentUrl);
 document.getElementById('random-pdp-btn').addEventListener('click', getRandomPDP);
 
 function getRandomPDP() {
-    let randomProductIndex = getRandomInt(0, products.length - 1);
-    let randomUrl = products[randomProductIndex].__5;
-    chrome.tabs.update({ url: `${urlDisplay.innerHTML}${randomUrl}` });
+    let randomUrl;
+    let randomProductIndex;
+    if(isSuperBrightLeds()){
+        randomProductIndex = getRandomInt(0, liveProducts.length - 1);
+        randomUrl = liveProducts[randomProductIndex].__5;
+        chrome.tabs.update({ url: `${urlDisplay.innerHTML}${randomUrl}` });
+    }else{
+        randomProductIndex = getRandomInt(0, devProducts.length - 1);
+        randomUrl = devProducts[randomProductIndex].product_id;
+        chrome.tabs.update({ url: `${urlDisplay.innerHTML}/catalog/product/view/id/${randomUrl}` });
+    }
     check404();
 }
 
